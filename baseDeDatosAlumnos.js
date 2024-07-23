@@ -1,8 +1,8 @@
 /*
 Proyecto: Base de datos de alumnos
 Descripción
-Crearán un pequeño proyecto con html, css y js con el cual podrán gestionar a los alumnos de una clase, 
-así como sus calificaciones y sacar datos importantes sobre su performance.
+Crearán un pequeño proyecto con html, css y js con el cual podrán gestionar a los alumnos 
+de una clase, así como sus calificaciones y sacar datos importantes sobre su performance.
 
 Requisitos
 1.- Crear una clase alumno, la cual debe incluir:
@@ -12,7 +12,8 @@ Edad
 Materias inscritas
 Calificaciones
 
-(Esta es la clase base, si quieren agregarle mas datos son libres de hacerla tan completa como quieran)
+(Esta es la clase base, si quieren agregarle mas datos son libres de hacerla tan completa
+como quieran)
 
 
 2.- Alta de alumnos
@@ -32,12 +33,14 @@ Obtener promedio de un alumno.
 Obtener promedio del grupo.
 Obtener lista de alumnos ordenados ascendente y descendente por calificación.
 
-Con los datos almacenados en la clase, deben agregar otro ordenamiento o búsqueda bajo el parámetro que quieran 
+Con los datos almacenados en la clase, deben agregar otro ordenamiento o búsqueda
+bajo el parámetro que quieran 
 (Este es el punto extra).
 
 5.- Preferentemente todo guarden en LocalStorage para que puedan tener persistencia de datos (Opcional x2)
 
 */
+
 
 console.log("========= INICIO DE PROYECTO BASE DE DATOS ALUMNOS=========");
 
