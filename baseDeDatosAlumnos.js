@@ -30,7 +30,7 @@ Crear grupos y asignarle alumnos.ok  (Usen estructuras de datos).
 Buscar por nombre.
 Buscar por apellido.
 Obtener promedio de un alumno.ok
-Obtener promedio del grupo.
+Obtener promedio del grupo.ok
 Obtener lista de alumnos ordenados ascendente y descendente por calificación.???
 
 Con los datos almacenados en la clase, deben agregar otro ordenamiento o búsqueda
@@ -45,7 +45,7 @@ bajo el parámetro que quieran
 console.log("========= INICIO DE PROYECTO BASE DE DATOS ALUMNOS=========");
 
 //1.- Creacionde la clase BaseDeDatos general:
-class BaseDeDatos{
+class baseDeDatos{
     
     // 2.- Constructor sin atributos, la clase Grupo será solamente un arreglo de objetos:
     constructor(){
@@ -55,43 +55,125 @@ class BaseDeDatos{
 
     
     //3.- Definicion de metodos: Metodo agregar alumno a un grupo:
-    agregarAlumnoABaseDeDatos(Alumno){
-        this.arrayTodosLosAlumnos.push(Alumno);
+    agregarAlumnoABaseDeDatos(alumno){
+        this.arrayTodosLosAlumnos.push(alumno);
         
     }
 
+    ordenarPorNombreAscendente(){
+      
+        this.arrayTodosLosAlumnos.sort(function (a, b) {
+            if (a.anombre > b.anombre) {
+              return 1;
+            }
+            if (a.anombre < b.anombre) {
+              return -1;
+            }
+            // a must be equal to b
+            return 0;
+          });
+          
+          console.log(`Orden A-Z Ascendente:`);
+          console.log(this.arrayTodosLosAlumnos);
+    }
+    ordenarPorNombreDescendiente(){
+      
+        this.arrayTodosLosAlumnos.sort(function (a, b) {
+            if (a.anombre < b.anombre) {
+              return 1;
+            }
+            if (a.anombre > b.anombre) {
+              return -1;
+            }
+            // a must be equal to b
+            return 0;
+          });
     
+          console.log(`Orden A-Z Descendiente:`);
+          console.log(this.arrayTodosLosAlumnos);
+          
+    }
+
+    ordenarPorPromedioAscendente(){
+        this.arrayTodosLosAlumnos.sort(function (a, b) {
+            return a.califPromedio - b.califPromedio;
+        });
+        console.log(this.arrayTodosLosAlumnos);
+    }
 }
 
-class Grupo {
-    constructor(){
-
-        this.arrayGrupoA = [];
-        this.arrayGrupoB = [];
+class grupo {
+    constructor([],nombreGrupo){
+        
+        this.arrayGrupo = [];
+        this.nombreGrupo = nombreGrupo;
+        
     }
 
+    agregarAlumnoAGrupoA(alumno){
 
-
-    agregarAlumnoAGrupoA(Alumno){
-
-        this.arrayGrupoA.push(Alumno);
+        this.arrayGrupo.push(alumno);
     }
 
-    agregarAlumnoAGrupoB(Alumno){
+    agregarAlumnoAGrupoB(alumno){
 
-        this.arrayGrupoB.push(Alumno);
+        this.arrayGrupo.push(alumno);
     }
 
+    mostrarGrupo(grupo,nombreGrupo){
+    
+    console.log(this.arrayGrupo);
+    console.log(nombreGrupo);
+    console.log(`El grupo ${nombreGrupo} tiene ${this.arrayGrupo.length} alumnos `);
+    
+    }
+
+    calcularPromedioGrupo(grupo,nombreGrupo){
+
+        if(this.arrayGrupo.length == 0){
+            console.log(`El grupo ${nombreGrupo} está vacio no se puede obtener promedio de grupo`);
+            console.log("=============================");
+        }
+        else{
+            console.log(`El grupo ${nombreGrupo} tiene ${this.arrayGrupo.length} alumnos a los cuales se les calculara el promedio`);
+            
+            let sumapromgrupo = 0;
+            let divisorgrupo = 0;
+            let promedioGrupo = 0;
+
+            for(let i = 0; i < this.arrayGrupo.length; i++){
+                console.log(`El promedio del alumno ${this.arrayGrupo[i].anombre} es de ${this.arrayGrupo[i].califPromedio}`)
+                
+                if(this.arrayGrupo[i].califPromedio == null){
+                    console.log(`El promedio del alumno ${this.arrayGrupo[i].anombre} es de ${this.arrayGrupo[i].califPromedio} NO es valido para promediar`)
+                }
+                else{
+
+                    sumapromgrupo += this.arrayGrupo[i].califPromedio
+                    divisorgrupo ++;
+                    promedioGrupo = sumapromgrupo / divisorgrupo; 
+                }
+                
+
+            }
+        
+            console.log(`El promedio del grupo ${nombreGrupo} es de ${promedioGrupo} integrado por ${divisorgrupo} alumnos `);
+            console.log("=============================");
+        }
+
+    }   
 }
 
 // Creacion de array de clase tipo Grupo:
-let grupoA = new Grupo();
-let grupoB = new Grupo();
+let grupoA = new grupo([],);
+let grupoB = new grupo([],);
+let grupoC = new grupo([]);
 
 
 
-//1.- Creacionde la clase Alumno:
-class Alumno {
+
+//1.- Creacionde la clase alumno:
+class alumno {
     
     // 2. Definir los atributos, esto se hace dentro del constructor.
     constructor(anombre, apellidoPaterno, apellidoMaterno, edad, materiaMatematicas, materiaHistoria, materiaGeografia, califMatematicas, califHistoria,  califGeografia, califPromedio ){
@@ -115,80 +197,81 @@ class Alumno {
     
     altaAlumno(){
 
-        //let alumno1 = new Alumno(Javier, Cornejo, Gomez, 38);
-        //let alumno2 = new Alumno(Zaira, Rojas, Sierra, 30);
+        //let alumno1 = new alumno(Javier, Cornejo, Gomez, 38);
+        //let alumno2 = new alumno(Zaira, Rojas, Sierra, 30);
     }
 
-    inscribirAClaseMatematicas(Alumno){
+    inscribirAClaseMatematicas(alumno){
 
-        Alumno.materiaMatematicas = "inscrito";
+        alumno.materiaMatematicas = "inscrito";
     }
 
-    inscribirAClaseHistoria(Alumno){
+    inscribirAClaseHistoria(alumno){
 
-        Alumno.materiaHistoria = "inscrito";
+        alumno.materiaHistoria = "inscrito";
     }
 
-    inscribirAClaseGeografia(Alumno){
+    inscribirAClaseGeografia(alumno){
 
-        Alumno.materiaGeografia = "inscrito";
+        alumno.materiaGeografia = "inscrito";
     }
 
     // METODOS DE ASIGNACIONES DE CALIFIFCACIONES:
-    asignarCalifMatematicas(Alumno,califMatematicas){
+    asignarCalifMatematicas(alumno,califMatematicas){
 
         //  Primero se valida si el alumno está inscrito a la materia , si no se notifica y no se graba la calificacion.
-        if(Alumno.materiaMatematicas == null){
+        if(alumno.materiaMatematicas == null){
 
-        console.log(`El alumno ${Alumno.anombre} "NO" está inscrito en la materia de Matematicas a la cual quiere asignar calificación, inscriba primero`);
+        console.log(`El alumno ${alumno.anombre} "NO" está inscrito en la materia de Matematicas a la cual quiere asignar calificación, inscriba primero`);
 
         }
         else{
             // si el alumno si está inscrito en la materia se procede con la asignacion de la calificación:
-            console.log(`El alumno ${Alumno.anombre} "SI" está inscrito en la materia de Matematicas, se asigna calificación de ${califMatematicas}`);
-            Alumno.califMatematicas = califMatematicas;
+            console.log(`El alumno ${alumno.anombre} "SI" está inscrito en la materia de Matematicas, se asigna calificación de ${califMatematicas}`);
+            alumno.califMatematicas = califMatematicas;
         }
         
-        
+        alumno.calcularPromedio(alumno);    
     }
 
-    asignarCalifHistoria(Alumno,califHistoria){
+    asignarCalifHistoria(alumno,califHistoria){
         
         //  Primero se valida si el alumno está inscrito a la materia , si no se notifica y no se graba la calificacion.
-        if(Alumno.materiaHistoria == null){
+        if(alumno.materiaHistoria == null){
 
-            console.log(`El alumno ${Alumno.anombre} "NO" está inscrito en la materia de Historia a la cual quiere asignar calificación, inscriba primero`);
+            console.log(`El alumno ${alumno.anombre} "NO" está inscrito en la materia de Historia a la cual quiere asignar calificación, inscriba primero`);
     
             }
             else{
                 // si el alumno si está inscrito en la materia se procede con la asignacion de la calificación:
-                console.log(`El alumno ${Alumno.anombre} "SI" está inscrito en la materia Historia, se asigna calificación de ${califHistoria}`);
-                Alumno.califHistoria = califHistoria;
+                console.log(`El alumno ${alumno.anombre} "SI" está inscrito en la materia Historia, se asigna calificación de ${califHistoria}`);
+                alumno.califHistoria = califHistoria;
             }
-        
+        alumno.calcularPromedio(alumno);
     }
     
-    asignarCalifGeografia(Alumno,califGeografia){
+    asignarCalifGeografia(alumno,califGeografia){
         
         //  Primero se valida si el alumno está inscrito a la materia , si no se notifica y no se graba la calificacion.
-        if(Alumno.materiaGeografia == null){
+        if(alumno.materiaGeografia == null){
 
-            console.log(`El alumno ${Alumno.anombre} "NO" está inscrito en la materia de Geografia a la cual quiere asignar calificación, inscriba primero`);
+            console.log(`El alumno ${alumno.anombre} "NO" está inscrito en la materia de Geografia a la cual quiere asignar calificación, inscriba primero`);
     
             }
             else{
                 // si el alumno si está inscrito en la materia se procede con la asignacion de la calificación:
-                console.log(`El alumno ${Alumno.anombre} "SI" está inscrito en la materia Geografia, se asigna calificación de ${califGeografia}`);
-                Alumno.califGeografia = califGeografia;
+                console.log(`El alumno ${alumno.anombre} "SI" está inscrito en la materia Geografia, se asigna calificación de ${califGeografia}`);
+                alumno.califGeografia = califGeografia;
             }
         
+        alumno.calcularPromedio(alumno);
     }
 
-    calcularPromedio(Alumno){
+    calcularPromedio(alumno){
         // Validar que el alumno está inscrito a almenos 1 materia para calcular promedio.
-        if(Alumno.materiaMatematicas == null && Alumno.materiaHistoria == null && Alumno.materiaGeografia == null){
+        if(alumno.materiaMatematicas == null && alumno.materiaHistoria == null && alumno.materiaGeografia == null){
         
-            console.log(`El alumno ${Alumno.anombre} NO está inscrito a ninguna materia, No se puede calcular un promedio`);
+            console.log(`El alumno ${alumno.anombre} NO está inscrito a ninguna materia, No se puede calcular un promedio`);
             
         }else{
 
@@ -198,31 +281,31 @@ class Alumno {
 
 
             // Si el alumno está inscrito en la amteria , es decir no tiene valor "null" entonces se considera la materia para calcular el promedio:
-            if(Alumno.materiaMatematicas != null){
-                suma += Alumno.califMatematicas;
+            if(alumno.materiaMatematicas != null && alumno.califMatematicas != null){
+                suma += alumno.califMatematicas;
                 divisor ++;
-                console.log(`El alumno ${Alumno.anombre} está "${Alumno.materiaMatematicas}" en la materia de Matematicas y su calificacion es de ${Alumno.califMatematicas} se considera para promedio`);
-            }else{console.log(`El alumno ${Alumno.anombre} "NO" está inscrito en la materia de Matematicas, no se considera para promedio`);}
+                console.log(`El alumno ${alumno.anombre} está "${alumno.materiaMatematicas}" en la materia de Matematicas y su calificacion es de ${alumno.califMatematicas} se considera para promedio`);
+            }else{console.log(`El alumno ${alumno.anombre} "NO" está inscrito en la materia de Matematicas o no tiene calificación asignada, no se considera para promedio`);}
             
             
-            if(Alumno.materiaHistoria != null){
-                suma += Alumno.califHistoria;
+            if(alumno.materiaHistoria != null && alumno.califHistoria != null){
+                suma += alumno.califHistoria;
                 divisor ++;
-                console.log(`El alumno ${Alumno.anombre} está "${Alumno.materiaHistoria}" en la materia de Historia y su calificacion es de ${Alumno.califHistoria} se considera para promedio`); 
-            }else{console.log(`El alumno ${Alumno.anombre} "NO" está inscrito en la materia de Historia, no se considera para promedio`);}
+                console.log(`El alumno ${alumno.anombre} está "${alumno.materiaHistoria}" en la materia de Historia y su calificacion es de ${alumno.califHistoria} se considera para promedio`); 
+            }else{console.log(`El alumno ${alumno.anombre} "NO" está inscrito en la materia de Historia  o no tiene calificación asignada, no se considera para promedio`);}
             
             
-            if(Alumno.materiaGeografia != null){
-                suma += Alumno.califGeografia;
+            if(alumno.materiaGeografia != null && alumno.califGeografia != null){
+                suma += alumno.califGeografia;
                 divisor ++;
-                console.log(`El alumno ${Alumno.anombre} está "${Alumno.materiaGeografia}" en la materia de Geografía y su calificacion es de ${Alumno.califGeografia} se considera para promedio`);
-            }else{console.log(`El alumno ${Alumno.anombre} "NO" está inscrito en la materia de Geografia, no se considera para promedio`);}
+                console.log(`El alumno ${alumno.anombre} está "${alumno.materiaGeografia}" en la materia de Geografía y su calificacion es de ${alumno.califGeografia} se considera para promedio`);
+            }else{console.log(`El alumno ${alumno.anombre} "NO" está inscrito en la materia de Geografia  o no tiene calificación asignada, no se considera para promedio`);}
         
         promedio = suma / divisor;
-        console.log(`El promedio del alumno ${Alumno.anombre} es de: ${promedio} `);
+        console.log(`El promedio del alumno ${alumno.anombre} es de: ${promedio} `);
         // Al alumno se le asigna su calificación promedio en su atributo personal "califPromedio"
-        Alumno.califPromedio = promedio;
-        console.log(Alumno.califPromedio);
+        alumno.califPromedio = promedio;
+        console.log("====================");
         }
         
         // Validar que el alumno tenga calificaciones registradas
@@ -231,17 +314,17 @@ class Alumno {
 
 }
 
-// creacion de objetos de clase tipo Alumno:
-let alumnoJavier = new Alumno("Javier","Cornejo","Gomez", 38);
-let alumnoZaira = new Alumno(`Zaira`, 'Rojas', "Sierra", 30);
-let alumnoConny = new Alumno(`Conny`, 'Gomez', "Guzman", 62);
-let alumnoAndrea = new Alumno(`Andrea`, 'Cornejo', "Vazquez", 34);
-let alumnoDavid = new Alumno(`David`, 'Rojas', "Maldonado", 24);
-let alumnoSofia = new Alumno(`Sofia`, 'Palacios', "Figueroa", 26);
-let alumnoJorge = new Alumno(`Jorge`, 'Avelar', "Ceron", 68,null,null,"inscrito",null,null,8.5);
+// creacion de objetos de clase tipo alumno:
+let alumnoJavier = new alumno("Javier","Cornejo","Gomez", 38);
+let alumnoZaira = new alumno(`Zaira`, 'Rojas', "Sierra", 30);
+let alumnoConny = new alumno(`Conny`, 'Gomez', "Guzman", 62);
+let alumnoAndrea = new alumno(`Andrea`, 'Cornejo', "Vazquez", 34);
+let alumnoDavid = new alumno(`David`, 'Rojas', "Maldonado", 24);
+let alumnoSofia = new alumno(`Sofia`, 'Palacios', "Figueroa", 26);
+let alumnoJorge = new alumno(`Jorge`, 'Avelar', "Ceron", 68,null,null,"inscrito",null,null,8.5);
 
 // Creacion del array general que será la base de datos de todos los alumnos
-let todos = new BaseDeDatos();
+let todos = new baseDeDatos();
 
 
 
@@ -305,15 +388,32 @@ alumnoZaira.calcularPromedio(alumnoZaira);
 alumnoSofia.calcularPromedio(alumnoSofia);
 
 // impresiones en consola:
-console.log(todos);
 
-console.log(`La edad del alumno ${alumnoJavier.anombre} es de ${alumnoJavier.edad} años. `);
-console.log(`El alumno ${alumnoJorge.anombre} está "${alumnoJorge.materiaGeografia}" en la materia de Geografía y su calificacion es de ${alumnoJorge.califGeografia}`);
 
+// console.log(`La edad del alumno ${alumnoJavier.anombre} es de ${alumnoJavier.edad} años. `);
+// console.log(`El alumno ${alumnoJorge.anombre} está "${alumnoJorge.materiaGeografia}" en la materia de Geografía y su calificacion es de ${alumnoJorge.califGeografia}`);
+
+/* PRUEBAS DE MODIFICACION DE DATOS Y AFUERA DE LOS ARRAYS:
 console.log(`AFUERA: El alumno ${alumnoJavier.anombre} está "${alumnoJavier.materiaMatematicas}" en la materia de Matematicas y su calificacion es de ${alumnoJavier.califMatematicas}`);
 console.log(`AFUERA: El alumno ${alumnoJavier.anombre} está "${alumnoJavier.materiaHistoria}" en la materia de Historia y su calificacion es de ${alumnoJavier.califHistoria}`);
 console.log(`AFUERA: El alumno ${alumnoJavier.anombre} está "${alumnoJavier.materiaGeografia}" en la materia de Geografía y su calificacion es de ${alumnoJavier.califGeografia}`);
 console.log(`AFUERA: El alumno ${alumnoJavier.anombre} tiene un promedio de ${alumnoJavier.califPromedio}`);
+*/
 
-console.log(grupoA);
-console.log(grupoB);
+
+grupoA.mostrarGrupo(grupoA,"A");
+grupoB.mostrarGrupo(grupoB,"B");
+grupoC.mostrarGrupo(grupoC,"C");
+
+grupoC.calcularPromedioGrupo(grupoC,"C");
+grupoA.calcularPromedioGrupo(grupoA,"A");
+grupoB.calcularPromedioGrupo(grupoB,"B");
+
+
+// Metodo de ordenamiento:
+
+// todos.ordenarPorNombreAscendente(todos);
+// todos.ordenarPorNombreDescendiente(todos);
+// todos.ordenarPorNombreAscendente(todos);
+
+todos.ordenarPorPromedioAscendente(todos);
