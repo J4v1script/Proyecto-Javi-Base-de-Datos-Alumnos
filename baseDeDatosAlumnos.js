@@ -29,9 +29,9 @@ Crear grupos y asignarle alumnos.ok  (Usen estructuras de datos).
 4.- Ya que tengan sus grupos con alumnos, deberán crear e implementar las siguientes funciones:
 Buscar por nombre.
 Buscar por apellido.
-Obtener promedio de un alumno.
+Obtener promedio de un alumno.ok
 Obtener promedio del grupo.
-Obtener lista de alumnos ordenados ascendente y descendente por calificación.
+Obtener lista de alumnos ordenados ascendente y descendente por calificación.???
 
 Con los datos almacenados en la clase, deben agregar otro ordenamiento o búsqueda
 bajo el parámetro que quieran 
@@ -119,12 +119,12 @@ class Alumno {
         //let alumno2 = new Alumno(Zaira, Rojas, Sierra, 30);
     }
 
-    incribirAClaseMatematicas(Alumno){
+    inscribirAClaseMatematicas(Alumno){
 
         Alumno.materiaMatematicas = "inscrito";
     }
 
-    incribirAClaseHistoria(Alumno){
+    inscribirAClaseHistoria(Alumno){
 
         Alumno.materiaHistoria = "inscrito";
     }
@@ -195,10 +195,6 @@ class Alumno {
         let suma = 0;
         let promedio = 0;
         let divisor= 0;
-
-        
-        
-        
 
 
             // Si el alumno está inscrito en la amteria , es decir no tiene valor "null" entonces se considera la materia para calcular el promedio:
@@ -272,20 +268,20 @@ grupoB.agregarAlumnoAGrupoB(alumnoSofia);
 
 
 // Metodo inscribir a clases:
-alumnoJavier.incribirAClaseHistoria(alumnoJavier);
-alumnoJavier.incribirAClaseMatematicas(alumnoJavier);
+alumnoJavier.inscribirAClaseHistoria(alumnoJavier);
+alumnoJavier.inscribirAClaseMatematicas(alumnoJavier);
 alumnoJavier.inscribirAClaseGeografia(alumnoJavier);
 
-alumnoZaira.incribirAClaseMatematicas(alumnoZaira);
-alumnoZaira.incribirAClaseHistoria(alumnoZaira);
+alumnoZaira.inscribirAClaseMatematicas(alumnoZaira);
+alumnoZaira.inscribirAClaseHistoria(alumnoZaira);
 // no se asigan a Zaira a la clase de Geografia
 
-alumnoJavier.incribirAClaseHistoria(alumnoConny);
-alumnoJavier.incribirAClaseHistoria(alumnoAndrea);
-// alumnoJavier.incribirAClaseHistoria(alumnoSofia);
+alumnoJavier.inscribirAClaseHistoria(alumnoConny);
+alumnoJavier.inscribirAClaseHistoria(alumnoAndrea);
+// alumnoJavier.inscribirAClaseHistoria(alumnoSofia);
 
 
-alumnoZaira.incribirAClaseMatematicas(alumnoDavid);
+alumnoZaira.inscribirAClaseMatematicas(alumnoDavid);
 
 
 // Metodos asignar calififaciones:
