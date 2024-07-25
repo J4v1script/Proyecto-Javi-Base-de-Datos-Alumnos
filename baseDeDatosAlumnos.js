@@ -27,11 +27,11 @@ Asignarle sus calificaciones.ok
 Crear grupos y asignarle alumnos.ok  (Usen estructuras de datos).
 
 4.- Ya que tengan sus grupos con alumnos, deberán crear e implementar las siguientes funciones:
-Buscar por nombre.
-Buscar por apellido.
+Buscar por nombre.ok
+Buscar por apellido.ok
 Obtener promedio de un alumno.ok
 Obtener promedio del grupo.ok
-Obtener lista de alumnos ordenados ascendente y descendente por calificación.???
+Obtener lista de alumnos ordenados ascendente y descendente por calificación. ok
 
 Con los datos almacenados en la clase, deben agregar otro ordenamiento o búsqueda
 bajo el parámetro que quieran 
@@ -99,6 +99,19 @@ class baseDeDatos{
             return a.califPromedio - b.califPromedio;
         });
         console.log(this.arrayTodosLosAlumnos);
+    }
+
+    buscarNombre(nombreBuscar){
+
+        let resultadonombre = this.arrayTodosLosAlumnos.filter(alumno => alumno.anombre == nombreBuscar);
+        console.log("====== Resultado de la busqueda por Nombre =====");
+        console.log(resultadonombre);
+    }
+    buscarApellido(apellidoBuscar){
+
+        let resultadoapellido = this.arrayTodosLosAlumnos.filter(alumno => alumno.apellidoPaterno == apellidoBuscar);
+        console.log("====== Resultado de la busqueda por Apellido =====");
+        console.log(resultadoapellido);
     }
 }
 
@@ -417,3 +430,9 @@ grupoB.calcularPromedioGrupo(grupoB,"B");
 // todos.ordenarPorNombreAscendente(todos);
 
 todos.ordenarPorPromedioAscendente(todos);
+
+
+// Metodos de busqueda:
+
+todos.buscarNombre("Zaira");
+todos.buscarApellido("Cornejo");
