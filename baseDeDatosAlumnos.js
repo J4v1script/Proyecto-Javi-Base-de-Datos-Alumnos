@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 /*
 Proyecto: Base de datos de alumnos
 Descripción
@@ -34,7 +41,7 @@ Obtener promedio del grupo.ok
 Obtener lista de alumnos ordenados ascendente y descendente por calificación. ok
 
 Con los datos almacenados en la clase, deben agregar otro ordenamiento o búsqueda
-bajo el parámetro que quieran 
+bajo el parámetro que quieran. ok 
 (Este es el punto extra).
 
 5.- Preferentemente todo guarden en LocalStorage para que puedan tener persistencia de datos (Opcional x2)
@@ -57,6 +64,28 @@ class baseDeDatos{
     //3.- Definicion de metodos: Metodo agregar alumno a un grupo:
     agregarAlumnoABaseDeDatos(alumno){
         this.arrayTodosLosAlumnos.push(alumno);
+        console.log(todos);
+
+       /* INSERTAR FILA NUEVA EN LA TABLA:
+       
+        function addRow(tableID) {
+            // Get a reference to the table
+            let tableRef = document.getElementById(tableID);
+          
+            // Insert a row at the end of the table
+            let newRow = tableRef.insertRow(-1);
+          
+            // Insert a cell in the row at index 0
+            let newCell = newRow.insertCell(0);
+          
+            // Append a text node to the cell
+            let newText = document.createTextNode("New bottom row");
+            newCell.appendChild(newText);
+          }
+          
+          // Call addRow() with the table's ID
+          addRow("my-table");
+          */
         
     }
 
@@ -114,6 +143,9 @@ class baseDeDatos{
         console.log(resultadoapellido);
     }
 }
+
+// Creacion del array general que será la base de datos de todos los alumnos
+let todos = new baseDeDatos();
 
 class grupo {
     constructor([],nombreGrupo){
@@ -178,9 +210,9 @@ class grupo {
 }
 
 // Creacion de array de clase tipo Grupo:
-let grupoA = new grupo([],);
-let grupoB = new grupo([],);
-let grupoC = new grupo([]);
+// let grupoA = new grupo([],);
+// let grupoB = new grupo([],);
+// let grupoC = new grupo([]);
 
 
 
@@ -328,16 +360,20 @@ class alumno {
 }
 
 // creacion de objetos de clase tipo alumno:
-let alumnoJavier = new alumno("Javier","Cornejo","Gomez", 38);
-let alumnoZaira = new alumno(`Zaira`, 'Rojas', "Sierra", 30);
-let alumnoConny = new alumno(`Conny`, 'Gomez', "Guzman", 62);
-let alumnoAndrea = new alumno(`Andrea`, 'Cornejo', "Vazquez", 34);
-let alumnoDavid = new alumno(`David`, 'Rojas', "Maldonado", 24);
-let alumnoSofia = new alumno(`Sofia`, 'Palacios', "Figueroa", 26);
-let alumnoJorge = new alumno(`Jorge`, 'Avelar', "Ceron", 68,null,null,"inscrito",null,null,8.5);
 
-// Creacion del array general que será la base de datos de todos los alumnos
-let todos = new baseDeDatos();
+
+
+
+
+// let alumnoJavier = new alumno("Javier","Cornejo","Gomez", 38);
+// let alumnoZaira = new alumno(`Zaira`, 'Rojas', "Sierra", 30);
+// let alumnoConny = new alumno(`Conny`, 'Gomez', "Guzman", 62);
+// let alumnoAndrea = new alumno(`Andrea`, 'Cornejo', "Vazquez", 34);
+// let alumnoDavid = new alumno(`David`, 'Rojas', "Maldonado", 24);
+// let alumnoSofia = new alumno(`Sofia`, 'Palacios', "Figueroa", 26);
+// let alumnoJorge = new alumno(`Jorge`, 'Avelar', "Ceron", 68,null,null,"inscrito",null,null,8.5);
+
+
 
 
 
@@ -345,60 +381,60 @@ let todos = new baseDeDatos();
 
 
 // Metodo alta agregar por default al array "todos" donde esta toda la base de datos de alumnos:
-todos.agregarAlumnoABaseDeDatos(alumnoJavier);
-todos.agregarAlumnoABaseDeDatos(alumnoZaira);
-todos.agregarAlumnoABaseDeDatos(alumnoConny);
-todos.agregarAlumnoABaseDeDatos(alumnoAndrea);
-todos.agregarAlumnoABaseDeDatos(alumnoDavid);
-todos.agregarAlumnoABaseDeDatos(alumnoSofia);
-todos.agregarAlumnoABaseDeDatos(alumnoJorge);
+// todos.agregarAlumnoABaseDeDatos(alumnoJavier);
+// todos.agregarAlumnoABaseDeDatos(alumnoZaira);
+// todos.agregarAlumnoABaseDeDatos(alumnoConny);
+// todos.agregarAlumnoABaseDeDatos(alumnoAndrea);
+// todos.agregarAlumnoABaseDeDatos(alumnoDavid);
+// todos.agregarAlumnoABaseDeDatos(alumnoSofia);
+// todos.agregarAlumnoABaseDeDatos(alumnoJorge);
 
 // Metodo de agregar a un grupo:
-grupoA.agregarAlumnoAGrupoA(alumnoJavier);
-grupoA.agregarAlumnoAGrupoA(alumnoConny);
-grupoA.agregarAlumnoAGrupoA(alumnoAndrea);
-grupoA.agregarAlumnoAGrupoA(alumnoJorge);
-grupoB.agregarAlumnoAGrupoB(alumnoZaira);
-grupoB.agregarAlumnoAGrupoB(alumnoDavid);
-grupoB.agregarAlumnoAGrupoB(alumnoSofia);
+// grupoA.agregarAlumnoAGrupoA(alumnoJavier);
+// grupoA.agregarAlumnoAGrupoA(alumnoConny);
+// grupoA.agregarAlumnoAGrupoA(alumnoAndrea);
+// grupoA.agregarAlumnoAGrupoA(alumnoJorge);
+// grupoB.agregarAlumnoAGrupoB(alumnoZaira);
+// grupoB.agregarAlumnoAGrupoB(alumnoDavid);
+// grupoB.agregarAlumnoAGrupoB(alumnoSofia);
 
 
 // Metodo inscribir a clases:
-alumnoJavier.inscribirAClaseHistoria(alumnoJavier);
-alumnoJavier.inscribirAClaseMatematicas(alumnoJavier);
-alumnoJavier.inscribirAClaseGeografia(alumnoJavier);
+// alumnoJavier.inscribirAClaseHistoria(alumnoJavier);
+// alumnoJavier.inscribirAClaseMatematicas(alumnoJavier);
+// alumnoJavier.inscribirAClaseGeografia(alumnoJavier);
 
-alumnoZaira.inscribirAClaseMatematicas(alumnoZaira);
-alumnoZaira.inscribirAClaseHistoria(alumnoZaira);
+// alumnoZaira.inscribirAClaseMatematicas(alumnoZaira);
+// alumnoZaira.inscribirAClaseHistoria(alumnoZaira);
 // no se asigan a Zaira a la clase de Geografia
 
-alumnoJavier.inscribirAClaseHistoria(alumnoConny);
-alumnoJavier.inscribirAClaseHistoria(alumnoAndrea);
+// alumnoJavier.inscribirAClaseHistoria(alumnoConny);
+// alumnoJavier.inscribirAClaseHistoria(alumnoAndrea);
 // alumnoJavier.inscribirAClaseHistoria(alumnoSofia);
 
 
-alumnoZaira.inscribirAClaseMatematicas(alumnoDavid);
+// alumnoZaira.inscribirAClaseMatematicas(alumnoDavid);
 
 
 // Metodos asignar calififaciones:
-alumnoJavier.asignarCalifMatematicas(alumnoJavier,8.5);
-alumnoJavier.asignarCalifHistoria(alumnoJavier,9.5);
-alumnoJavier.asignarCalifGeografia(alumnoJavier,7.5);
+// alumnoJavier.asignarCalifMatematicas(alumnoJavier,8.5);
+// alumnoJavier.asignarCalifHistoria(alumnoJavier,9.5);
+// alumnoJavier.asignarCalifGeografia(alumnoJavier,7.5);
 
-alumnoJavier.asignarCalifHistoria(alumnoConny,9.0);
-alumnoJavier.asignarCalifHistoria(alumnoAndrea,6.0);
-alumnoJavier.asignarCalifHistoria(alumnoSofia,7.5);
+// alumnoJavier.asignarCalifHistoria(alumnoConny,9.0);
+// alumnoJavier.asignarCalifHistoria(alumnoAndrea,6.0);
+// alumnoJavier.asignarCalifHistoria(alumnoSofia,7.5);
 
 
-alumnoJavier.asignarCalifMatematicas(alumnoZaira,10);
-alumnoJavier.asignarCalifHistoria(alumnoZaira,8.4);
+// alumnoJavier.asignarCalifMatematicas(alumnoZaira,10);
+// alumnoJavier.asignarCalifHistoria(alumnoZaira,8.4);
 // si se intenta asignar una calificacion a una materia que no tiene asignada el alumno , no se captura y se reporta.
-alumnoJavier.asignarCalifGeografia(alumnoZaira,7.0);
+// alumnoJavier.asignarCalifGeografia(alumnoZaira,7.0);
 
 // Metodo para calcular el promedio del alumno segun su estatus de calificación
-alumnoJavier.calcularPromedio(alumnoJavier);
-alumnoZaira.calcularPromedio(alumnoZaira);
-alumnoSofia.calcularPromedio(alumnoSofia);
+// alumnoJavier.calcularPromedio(alumnoJavier);
+// alumnoZaira.calcularPromedio(alumnoZaira);
+// alumnoSofia.calcularPromedio(alumnoSofia);
 
 // impresiones en consola:
 
@@ -414,13 +450,13 @@ console.log(`AFUERA: El alumno ${alumnoJavier.anombre} tiene un promedio de ${al
 */
 
 
-grupoA.mostrarGrupo(grupoA,"A");
-grupoB.mostrarGrupo(grupoB,"B");
-grupoC.mostrarGrupo(grupoC,"C");
+// grupoA.mostrarGrupo(grupoA,"A");
+// grupoB.mostrarGrupo(grupoB,"B");
+// grupoC.mostrarGrupo(grupoC,"C");
 
-grupoC.calcularPromedioGrupo(grupoC,"C");
-grupoA.calcularPromedioGrupo(grupoA,"A");
-grupoB.calcularPromedioGrupo(grupoB,"B");
+// grupoC.calcularPromedioGrupo(grupoC,"C");
+// grupoA.calcularPromedioGrupo(grupoA,"A");
+// grupoB.calcularPromedioGrupo(grupoB,"B");
 
 
 // Metodo de ordenamiento:
@@ -429,10 +465,37 @@ grupoB.calcularPromedioGrupo(grupoB,"B");
 // todos.ordenarPorNombreDescendiente(todos);
 // todos.ordenarPorNombreAscendente(todos);
 
-todos.ordenarPorPromedioAscendente(todos);
+// todos.ordenarPorPromedioAscendente(todos);
 
 
 // Metodos de busqueda:
 
-todos.buscarNombre("Zaira");
-todos.buscarApellido("Cornejo");
+// todos.buscarNombre("Zaira");
+// todos.buscarApellido("Cornejo");
+
+
+// Lectura de los datos capturados en el formulario:
+
+function captura(){
+
+    console.log("Inicio de funcion captura");
+
+    let anombre = document.getElementById("nombre").value;
+    let apellidoPaterno = document.getElementById("apellidoPaterno").value;
+    let apellidoMaterno = document.getElementById("apellidoMaterno").value;
+    let edad = document.getElementById("edad").value;
+
+    console.log(anombre);
+    console.log(apellidoPaterno);
+    console.log(apellidoMaterno);
+    console.log(edad);
+
+
+    let alumnoNuevo = new alumno(anombre,apellidoPaterno,apellidoMaterno,edad);
+
+    console.log(alumnoNuevo);
+
+    todos.agregarAlumnoABaseDeDatos(alumnoNuevo);
+}
+
+
