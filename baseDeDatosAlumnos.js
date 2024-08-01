@@ -23,7 +23,7 @@ Calificaciones
 como quieran)
 
 
-2.- Alta de alumnos
+2.- Alta de alumnos. ok
 Una vez creada la clase desde su sitio, deberán dar de alta alumnos, 
 por defecto lo único que deben pedir como requisito al inicio es nombre, apellidos, edad.
 
@@ -66,8 +66,35 @@ class baseDeDatos{
         this.arrayTodosLosAlumnos.push(alumno);
         console.log(todos);
 
-       /* INSERTAR FILA NUEVA EN LA TABLA:
+    // Construccion de la tabla con cada alumno agregadoa la bd:    
+        console.log("Inicio de construccion de tabla");
+
+        let index = this.arrayTodosLosAlumnos.length;
+        let tablareferencia = document.getElementById("table");
        
+        let nuevafilaref = tablareferencia.insertRow(-1);
+        
+        
+        let nuevaceldaref = nuevafilaref.insertCell(0);
+        nuevaceldaref.textContent = index;
+
+        nuevaceldaref = nuevafilaref.insertCell(1);
+        nuevaceldaref.textContent = alumno.anombre;
+        
+        nuevaceldaref = nuevafilaref.insertCell(2);
+        nuevaceldaref.textContent = alumno.apellidoPaterno;
+        
+        nuevaceldaref = nuevafilaref.insertCell(3);
+        nuevaceldaref.textContent = alumno.apellidoMaterno;
+        
+        nuevaceldaref = nuevafilaref.insertCell(4);
+        nuevaceldaref.textContent = alumno.edad;
+
+        
+    }
+
+       /* INSERTAR FILA NUEVA EN LA TABLA:
+
         function addRow(tableID) {
             // Get a reference to the table
             let tableRef = document.getElementById(tableID);
@@ -87,7 +114,7 @@ class baseDeDatos{
           addRow("my-table");
           */
         
-    }
+    
 
     ordenarPorNombreAscendente(){
       
